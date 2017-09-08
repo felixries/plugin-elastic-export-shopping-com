@@ -189,7 +189,7 @@ class ShoppingCOM extends CSVPluginGenerator
             $image = array_shift($this->elasticExportHelper->getImageListInOrder($variation, $settings, 1, ElasticExportCoreHelper::ITEM_IMAGES));
 
             $data = [
-                'Domain'        => 'www.motivationsgeschenke.de'
+                'Domain'        => 'www.motivationsgeschenke.de',
                 'EAN' 					=> $this->elasticExportHelper->getBarcodeByType($variation, $settings->get('barcode')),
                 'URL' 			=> $this->elasticExportHelper->getMutatedUrl($variation, $settings, true, false),
                 'Preis' 				=> $priceList['price']
