@@ -1,5 +1,5 @@
 {
-  "name": "ElasticExportShoppingCOM",
+  "name": "ElasticExportBUBE",
   "description": "This plugin adds the format ShoppingCOM to the Elastic Export.",
   "namespace": "ElasticExportShoppingCOM",
   "author": "plentymarkets GmbH",
@@ -18,8 +18,8 @@
   ],
   "version": "1.0.6",
   "marketplaceName": {
-    "de": "Shopping.com",
-    "en": "Shopping.com"
+    "de": "BUBE-EXPORT",
+    "en": "BUBE-EXPORT"
   },
   "require": ["ElasticExport"]
 }
