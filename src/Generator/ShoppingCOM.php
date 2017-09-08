@@ -21,7 +21,7 @@ class ShoppingCOM extends CSVPluginGenerator
 {
     use Loggable;
 
-    const DELIMITER = ",";
+    const DELIMITER = ";";
 
     /**
      * @var ElasticExportCoreHelper $elasticExportHelper
@@ -161,21 +161,10 @@ class ShoppingCOM extends CSVPluginGenerator
     private function head():array
     {
         return array(
-            'Händler-SKU',
-            'Hersteller',
+            'Domain',
             'EAN',
-            'Produktname',
-            'Produktbeschreibung',
-            'Preis',
-            'Produkt-URL',
-            'Produktbild-URL',
-            'Kategorie',
-            'Verfügbar',
-            'Verfügbarkeitdetails',
-            'Versand: Landtarif',
-            'Produktgewicht',
-            'Produkttyp',
-            'Grundpreis',
+            'URL',
+            'Preis'
         );
     }
 
@@ -200,21 +189,11 @@ class ShoppingCOM extends CSVPluginGenerator
             $image = array_shift($this->elasticExportHelper->getImageListInOrder($variation, $settings, 1, ElasticExportCoreHelper::ITEM_IMAGES));
 
             $data = [
-                'Händler-SKU' 			=> $variation['data']['item']['id'],
-                'Hersteller' 			=> $this->elasticExportHelper->getExternalManufacturerName((int)$variation['data']['item']['manufacturer']['id']),
+                'Domain'        => 'www.motivationsgeschenke.de'
                 'EAN' 					=> $this->elasticExportHelper->getBarcodeByType($variation, $settings->get('barcode')),
-                'Produktname' 			=> $this->elasticExportHelper->getMutatedName($variation, $settings),
-                'Produktbeschreibung' 	=> $this->elasticExportHelper->getMutatedDescription($variation, $settings),
-                'Preis' 				=> $priceList['price'],
-                'Produkt-URL' 			=> $this->elasticExportHelper->getMutatedUrl($variation, $settings, true, false),
-                'Produktbild-URL' 		=> $image,
-                'Kategorie'				=> $this->elasticExportHelper->getCategory((int)$variation['data']['defaultCategories'][0]['id'], $settings->get('lang'), $settings->get('plentyId')),
-                'Verfügbar' 			=> 'Ja',
-                'Verfügbarkeitdetails' 	=> $this->elasticExportHelper->getAvailability($variation, $settings),
-                'Versand: Landtarif' 	=> $shippingCost,
-                'Produktgewicht'        => $variation['data']['variation']['weightG'],
-                'Produkttyp' 			=> $this->elasticExportPropertyHelper->getItemPropertyByBackendName($variation, 'product_type', $settings->get('lang')),
-                'Grundpreis' 			=> $this->elasticExportPriceHelper->getBasePrice($variation, $priceList['price']),
+                'URL' 			=> $this->elasticExportHelper->getMutatedUrl($variation, $settings, true, false),
+                'Preis' 				=> $priceList['price']
+
             ];
 
             $this->addCSVContent(array_values($data));
