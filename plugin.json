@@ -1,5 +1,5 @@
 {
-  "name": "ElasticExportBUBE",
+  "name": "ElasticExportShoppingCOM",
   "description": "This plugin adds the format ShoppingCOM to the Elastic Export.",
   "namespace": "ElasticExportShoppingCOM",
   "author": "plentymarkets GmbH",
