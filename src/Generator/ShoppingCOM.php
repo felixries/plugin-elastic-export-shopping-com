@@ -163,6 +163,8 @@ class ShoppingCOM extends CSVPluginGenerator
         return array(
             'Domain',
             'EAN',
+            'Hersteller_ID',
+            'Artikelnummer',
             'URL',
             'Preis'
         );
@@ -191,6 +193,8 @@ class ShoppingCOM extends CSVPluginGenerator
             $data = [
                 'Domain'        => 'www.motivationsgeschenke.de',
                 'EAN' 					=> $this->elasticExportHelper->getBarcodeByType($variation, $settings->get('barcode')),
+                'Hersteller_ID' => '', 
+                'Artikelnummer'=> '',
                 'URL' 			=> $this->elasticExportHelper->getMutatedUrl($variation, $settings, true, false),
                 'Preis' 				=> $priceList['price']
 
